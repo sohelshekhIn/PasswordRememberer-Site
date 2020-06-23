@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Rememberer</title>
+    <link
+      rel="shortcut icon"
+      href="img/passwordRememberer.svg"
+      type="image/x-icon"
+    />
+    <style>
+      html {
+        overflow-y: auto;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      html::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+
+      html::-webkit-scrollbar-thumb {
+        background: black;
+        border-radius: 10px;
+      }
+      html::-webkit-scrollbar-track {
+        background: transparent;
+      }
+    </style>
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-analytics.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://staticcdn.web.app/content/tailwind.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/confirm.css" />
+  </head>
+  <body>
+    <header class="text-gray-700 body-font navbar">
+      <div
+        class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+      >
+        <a
+          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+        >
+          <img class="logo" src="img/passwordRememberer.svg" alt="Logo" />
+          <span class="ml-3 text-xl logo-txt">PASSWORD REMEMBERER</span>
+        </a>
+        <nav
+          class="md:ml-auto flex flex-wrap items-center text-base justify-center"
+        >
+          <a href="..#home" class="navLinks mr-5 hover:text-gray-900 active"
+            >Home</a
+          >
+          <a href="..#extension" class="navLinks mr-5 hover:text-gray-900"
+            >Extension</a
+          >
+          <a href="..#pricing" class="navLinks mr-5 hover:text-gray-900"
+            >Pricing</a
+          >
+          <a href="..#contact" class="navLinks mr-5 hover:text-gray-900"
+            >About</a
+          >
+        </nav>
+      </div>
+    </header>
+    <section id="main" class="text-gray-700 body-font">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-col text-center w-full mb-12">
+          <h1
+            class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 heading"
+          >
+            Confirm Your Email
+          </h1>
+          <p
+            class="lg:w-2/3 mx-auto my-0 leading-relaxed text-base userName"
+          ></p>
+          <center>
+            <img
+              class="mailbox"
+              src="img/mailbox.svg"
+              id="emailConfirm"
+              alt="Check your inbox"
+            />
+          </center>
+          <div class="beforeConfirmation">
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+              Click on the link sent to your email
+              <sohel class="userEmail"></sohel> for Email Verification to
+              proceed further!
+            </p>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+              If not received please check the spam folder!
+            </p>
+          </div>
+          <div class="afterConfirmation">
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+              Your email
+              <sohel class="userEmail"></sohel> is verified, you will be
+              redirect in <sohel class="timer">5</sohel> seconds!
+            </p>
+          </div>
+          <br />
+          <br />
+          <div class="buttonConfirmDiv">
+            <button
+              class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg btnSubmit"
+            >
+              CONFIRM
+            </button>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base resend">
+              Resend Email
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="text-gray-700 body-font">
+      <center>
+        <div
+          class="forFooter container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col"
+        >
+          <a
+            class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
+          >
+            <img
+              src="img/passwordRememberer.svg"
+              class="footerLogo"
+              alt="logo"
+            />
+            <span class="ml-3 text-xl">PASSWORD REMEMBERER</span>
+          </a>
+          <p
+            class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4"
+          >
+            © 2020 Sohel Editz
+          </p>
+        </div>
+      </center>
+    </footer>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/confirm.js"></script>
+  </body>
+</html>

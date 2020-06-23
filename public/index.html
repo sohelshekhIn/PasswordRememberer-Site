@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Rememberer</title>
+    <link
+      rel="shortcut icon"
+      href="img/passwordRememberer.svg"
+      type="image/x-icon"
+    />
+    <style>
+      html {
+        overflow-y: auto;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      html::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+
+      html::-webkit-scrollbar-thumb {
+        background: black;
+        border-radius: 10px;
+      }
+      html::-webkit-scrollbar-track {
+        background: transparent;
+      }
+    </style>
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-analytics.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://staticcdn.web.app/content/tailwind.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header id="index" class="text-gray-700 body-font navbar">
+      <div
+        class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+      >
+        <a
+          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+        >
+          <img class="logo" src="img/passwordRememberer.svg" alt="Logo" />
+          <h1 class="ml-3 text-xl">PASSWORD REMEMBERER</h1>
+        </a>
+        <nav
+          class="md:ml-auto flex flex-wrap items-center text-base justify-center"
+        >
+          <a href="#home" class="navLinks mr-5 hover:text-gray-900 active"
+            >Home</a
+          >
+          <a href="#extension" class="navLinks mr-5 hover:text-gray-900"
+            >Extension</a
+          >
+          <a href="#pricing" class="navLinks mr-5 hover:text-gray-900"
+            >Pricing</a
+          >
+          <a href="#contact" class="navLinks mr-5 hover:text-gray-900">About</a>
+          <a
+            href="createAccount.html?location=signup"
+            class="mr-5 hover:text-gray-900 signupBtn"
+            >Sign Up</a
+          >
+        </nav>
+      </div>
+    </header>
+    <div class="mainWindow">
+      <br id="home" />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br>
+      <section class="text-gray-700 body-font">
+        <div
+          class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center"
+        >
+          <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+            <img
+              class="object-cover object-center rounded"
+              alt="hero"
+              src="https://source.unsplash.com/720x600/?login,website,password,security,computer,facebook,google,instagram,chrome"
+            />
+          </div>
+          <div
+            class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center"
+          >
+            <h1
+              class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900"
+            >
+              Secure your account now <br class="hidden lg:inline-block" />with
+              our extension!
+            </h1>
+            <p class="mb-8 leading-relaxed">
+              PASSWORD REMEMBERER helps to manage and generate password for you,
+              across the internet!
+            </p>
+            <div class="flex justify-center mb-8">
+              <a href="createAccount.html?location=signup">
+                <button
+                  class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 semirounded text-lg"
+                >
+                  Sign Up
+                </button>
+              </a>
+              <a href="#contact">
+                <button
+                  class="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 semirounded text-lg"
+                >
+                  Know More
+                </button>
+              </a>
+            </div>
+
+            <div class="flex lg:flex-row md:flex-col">
+              <button
+                class="bg-gray-200 inline-flex py-3 px-5 semirounded-lg items-center hover:bg-gray-300 focus:outline-none"
+              >
+                <img
+                  class="w-6 h-6"
+                  src="img/chromeWebStore.svg"
+                  alt="Chrome Web Store"
+                />
+                <span class="ml-4 flex items-start flex-col leading-none">
+                  <span class="text-xs text-gray-600 mb-1">GET IT ON</span>
+                  <span class="title-font font-medium">Chrome Web Store</span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr />
+      <br id="extension" />
+      <br />
+      <!-- Extension -->
+      <section class="text-gray-700 body-font">
+        <div class="container px-5 py-24 mx-auto">
+          <div
+            class="flex flex-wrap w-full mb-20 flex-col items-center text-center"
+          >
+            <h1
+              class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900"
+            >
+              Features [Guest]
+            </h1>
+            <p class="lg:w-1/2 w-full leading-relaxed text-base">
+              Features differ between normal and pro account!
+            </p>
+          </div>
+          <div class="flex flex-wrap -m-4">
+            <div class="xl:w-1/3 md:w-1/2 p-4">
+              <div class="border border-gray-300 p-6 rounded-lg cardFeatures">
+                <div
+                  class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4"
+                >
+                  <img
+                    src="img/Localsave.png"
+                    class="iconsWeb"
+                    alt="Local save"
+                  />
+                </div>
+                <h2 class="text-lg text-gray-900 font-medium title-font mb-2">
+                  Local Save
+                </h2>
+                <p class="leading-relaxed text-base">
+                  Passwords are saved locally with full encryption!
+                </p>
+              </div>
+            </div>
+            <div class="xl:w-1/3 md:w-1/2 p-4">
+              <div class="border border-gray-300 p-6 rounded-lg cardFeatures">
+                <div
+                  class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4"
+                >
+                  <img
+                    src="img/LocalBackup.png"
+                    class="iconsWeb"
+                    alt="Local save"
+                  />
+                </div>
+                <h2 class="text-lg text-gray-900 font-medium title-font mb-2">
+                  Local Back Up
+                </h2>
+                <p class="leading-relaxed text-base">
+                  Get back up of your passwords locally!
+                </p>
+              </div>
+            </div>
+            <div class="xl:w-1/3 md:w-1/2 p-4">
+              <div class="border border-gray-300 p-6 rounded-lg cardFeatures">
+                <div
+                  class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4"
+                >
+                  <img
+                    src="img/mastercode.png"
+                    class="iconsWeb"
+                    alt="Local save"
+                  />
+                </div>
+                <h2 class="text-lg text-gray-900 font-medium title-font mb-2">
+                  Opens only with Master Code
+                </h2>
+                <p class="leading-relaxed text-base">
+                  Passwords can only be access with mastercode!
+                </p>
+              </div>
+            </div>
+            <div
+              class="flex flex-wrap w-full mb-20 flex-col items-center text-center"
+            >
+              <h1
+                class="sm:text-3xl text-2xl font-medium title-font mb-1 text-gray-900"
+              >
+                Features [User]
+              </h1>
+            </div>
+            <div class="xl:w-1/3 md:w-1/2 p-4">
+              <div class="border border-gray-300 p-6 rounded-lg cardFeatures">
+                <div
+                  class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4"
+                >
+                  <img
+                    src="img/globalAccess.png"
+                    class="iconsWeb"
+                    alt="Local save"
+                  />
+                </div>
+                <h2 class="text-lg text-gray-900 font-medium title-font mb-2">
+                  Global Access
+                </h2>
+                <p class="leading-relaxed text-base">
+                  Access your passwords globally with your account!
+                </p>
+              </div>
+            </div>
+            <div class="xl:w-1/3 md:w-1/2 p-4">
+              <div class="border border-gray-300 p-6 rounded-lg cardFeatures">
+                <div
+                  class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4"
+                >
+                  <img
+                    src="img/CloudBackUp.png"
+                    class="iconsWeb"
+                    alt="Local save"
+                  />
+                </div>
+                <h2 class="text-lg text-gray-900 font-medium title-font mb-2">
+                  Online Backup
+                </h2>
+                <p class="leading-relaxed text-base">
+                  bsckup your passwords online with encryption!
+                </p>
+              </div>
+            </div>
+            <div class="xl:w-1/3 md:w-1/2 p-4">
+              <div class="border border-gray-300 p-6 rounded-lg cardFeatures">
+                <div
+                  class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4"
+                >
+                  <img
+                    src="img/forgotMastercode.png"
+                    class="iconsWeb"
+                    alt="Local save"
+                  />
+                </div>
+                <h2 class="text-lg text-gray-900 font-medium title-font mb-2">
+                  Forgot Mastercode
+                </h2>
+                <p class="leading-relaxed text-base">
+                  Change your mastercode online with your account!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr />
+      <br id="pricing" />
+      <br />
+      <!-- pricing -->
+      <section class="text-gray-700 body-font overflow-hidden">
+        <div class="container px-5 py-24 mx-auto flex flex-wrap">
+          <div class="flex flex-col text-center w-full mb-12">
+            <h1
+              class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"
+            >
+              Pricing
+            </h1>
+          </div>
+          <div class="lg:w-1/4 mt-48 hidden lg:block">
+            <div
+              class="mt-px border-t border-gray-300 border-b border-l rounded-tl-lg rounded-bl-lg overflow-hidden"
+            >
+              <p
+                class="bg-gray-100 text-gray-900 h-12 text-center px-4 flex items-center justify-start -mt-px"
+              >
+                Local Save
+              </p>
+              <p
+                class="text-gray-900 h-12 text-center px-4 flex items-center justify-start"
+              >
+                Local Backup
+              </p>
+              <p
+                class="bg-gray-100 text-gray-900 h-12 text-center px-4 flex items-center justify-start"
+              >
+                Change Mastercode
+              </p>
+              <p
+                class="text-gray-900 h-12 text-center px-4 flex items-center justify-start"
+              >
+                Change Mastercode (forgot)
+              </p>
+              <p
+                class="bg-gray-100 text-gray-900 h-12 text-center px-4 flex items-center justify-start"
+              >
+                Cloud Backup
+              </p>
+              <p
+                class="text-gray-900 h-12 text-center px-4 flex items-center justify-start"
+              >
+                Global Access
+              </p>
+              <p
+                class="bg-gray-100 text-gray-900 h-12 text-center px-4 flex items-center justify-start"
+              >
+                Device
+              </p>
+              <p
+                class="text-gray-900 h-12 text-center px-4 flex items-center justify-start"
+              >
+                Max Limit
+              </p>
+              <p
+                class="bg-gray-100 text-gray-900 h-12 text-center px-4 flex items-center justify-start"
+              >
+                Multiple Mastercode
+              </p>
+            </div>
+          </div>
+          <div class="flex lg:w-3/4 w-full flex-wrap rounded-lg">
+            <div
+              class="cardNormal lg:w-1/3 lg:mt-px w-full mb-10 lg:mb-0 border-2 border-gray-300 lg:border-none rounded-lg lg:rounded-none"
+            >
+              <div
+                class="px-2 text-center h-48 flex flex-col items-center justify-center"
+              >
+                <h3 class="tracking-widest">START</h3>
+                <h2
+                  class="text-5xl text-gray-900 font-medium leading-none mb-4 mt-2"
+                >
+                  Free
+                </h2>
+                <span class="text-sm text-gray-600">Life time (if user)</span>
+              </div>
+              <p
+                class="bg-gray-100 text-gray-600 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300 cardBlocks"
+              >
+                Unlimited
+              </p>
+              <p
+                class="bg-gray-100 text-gray-600 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300 cardBlocks"
+              >
+                Once a month
+              </p>
+              <p
+                class="bg-gray-100 text-gray-600 text-center h-12 flex items-center justify-center cardBlocks"
+              >
+                <span
+                  class="w-5 h-5 inline-flex items-center justify-center bg-gray-500 text-white rounded-full flex-shrink-0"
+                >
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="3"
+                    class="w-3 h-3"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>
+              </p>
+              <p
+                class="bg-gray-100 text-gray-600 text-center h-12 flex items-center justify-center cardBlocks"
+              >
+                <span
+                  class="w-5 h-5 inline-flex items-center justify-center bg-gray-500 text-white rounded-full flex-shrink-0"
+                >
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="3"
+                    class="w-3 h-3"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>
+              </p>
+              <p
+                class="bg-gray-100 text-gray-600 text-center h-12 flex items-center justify-center cardBlocks"
+              >
+                <span
+                  class="w-5 h-5 inline-flex items-center justify-center bg-gray-500 text-white rounded-full flex-shrink-0"
+                >
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="3"
+                    class="w-3 h-3"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>
+              </p>
+              <p
+                class="bg-gray-100 text-gray-600 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300 cardBlocks"
+              >
+                Regional
+              </p>
+              <p
+                class="bg-gray-100 text-gray-600 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300 cardBlocks"
+              >
+                2
+              </p>
+              <p
+                class="bg-gray-100 text-gray-600 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300 cardBlocks"
+              >
+                250
+              </p>
+              <p
+                class="bg-gray-100 text-gray-600 text-center h-12 flex items-center justify-center cardBlocks"
+              >
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2.2"
+                  class="w-5 h-5 text-gray-500"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M18 6L6 18M6 6l12 12"></path>
+                </svg>
+              </p>
+              <div
+                class="border-t border-gray-300 p-6 text-center semirounded-bl-lg btn-secondary"
+              >
+                <a href="createAccount.html?location=signin">
+                  <button
+                    class="flex items-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 semirounded"
+                  >
+                    Sign In
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      class="w-4 h-4 ml-auto"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                  </button>
+                </a>
+              </div>
+            </div>
+            <div
+              class="lg:w-1/3 lg:-mt-px w-full mb-10 lg:mb-0 border-2 rounded-lg border-indigo-500 relative"
+            >
+              <span
+                class="bg-indigo-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl"
+                >POPULAR</span
+              >
+              <div
+                class="px-2 text-center h-48 flex flex-col items-center justify-center"
+              >
+                <h3 class="tracking-widest">PRO</h3>
+                <h2
+                  class="text-5xl text-gray-900 font-medium flex items-center justify-center leading-none mb-4 mt-2"
+                >
+                  ‎₹10
+                  <span class="text-gray-600 text-base ml-1">/mo</span>
+                </h2>
+                <span class="text-sm text-gray-600"
+                  >Charging ‎₹3650 per year</span
+                >
+              </div>
+              <p
+                class="bg-gray-100 text-gray-600 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300 cardBlocks"
+              >
+                Unlimited
+              </p>
+              <p
+                class="text-gray-600 text-center h-12 flex items-center justify-center"
+              >
+                <span
+                  class="w-5 h-5 inline-flex items-center justify-center bg-gray-500 text-white rounded-full flex-shrink-0"
+                >
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="3"
+                    class="w-3 h-3"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>
+              </p>
+              <p
+                class="bg-gray-100 text-gray-600 text-center h-12 flex items-center justify-center cardBlocks"
+              >
+                <span
+                  class="w-5 h-5 inline-flex items-center justify-center bg-gray-500 text-white rounded-full flex-shrink-0"
+                >
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="3"
+                    class="w-3 h-3"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>
+              </p>
+              <p
+                class="bg-gray-100 text-gray-600 text-center h-12 flex items-center justify-center cardBlocks"
+              >
+                <span
+                  class="w-5 h-5 inline-flex items-center justify-center bg-gray-500 text-white rounded-full flex-shrink-0"
+                >
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="3"
+                    class="w-3 h-3"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>
+              </p>
+              <p
+                class="bg-gray-100 text-gray-600 text-center h-12 flex items-center justify-center cardBlocks"
+              >
+                <span
+                  class="w-5 h-5 inline-flex items-center justify-center bg-gray-500 text-white rounded-full flex-shrink-0"
+                >
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="3"
+                    class="w-3 h-3"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>
+              </p>
+              <p
+                class="text-gray-600 text-center h-12 flex items-center justify-center"
+              >
+                <span
+                  class="w-5 h-5 inline-flex items-center justify-center bg-gray-500 text-white rounded-full flex-shrink-0"
+                >
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="3"
+                    class="w-3 h-3"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>
+              </p>
+              <p
+                class="bg-gray-100 text-gray-600 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300 cardBlocks"
+              >
+                100
+              </p>
+              <p
+                class="text-gray-600 text-center h-12 flex items-center justify-center"
+              >
+                <span
+                  class="w-5 h-5 inline-flex items-center justify-center bg-gray-500 text-white rounded-full flex-shrink-0"
+                >
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="3"
+                    class="w-3 h-3"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>
+              </p>
+              <p
+                class="text-gray-600 text-center h-12 flex items-center justify-center"
+              >
+                <span
+                  class="w-5 h-5 inline-flex items-center justify-center bg-gray-500 text-white rounded-full flex-shrink-0"
+                >
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="3"
+                    class="w-3 h-3"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>
+              </p>
+              <div
+                class="p-6 text-center border-t border-gray-300 semirounded btn-primary"
+              >
+                <a href="createAccount.html?location=signin">
+                  <button
+                    class="flex items-center mt-auto text-white bg-indigo-700 border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 semirounded"
+                  >
+                    Free Now! Sign Up
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      class="w-4 h-4 ml-auto"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr />
+      <!-- Contact and About -->
+      <section id="contact" class="text-gray-700 body-font relative">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-12">
+            <h1
+              class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"
+            >
+              Contact Me
+            </h1>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+              Contact me for any queries/review!
+            </p>
+          </div>
+          <div class="lg:w-1/2 md:w-2/3 mx-auto">
+            <div class="flex flex-wrap -m-2">
+              <div class="p-2 w-1/2">
+                <input
+                  class="w-full bg-gray-100 semirounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 msgSenderName"
+                  placeholder="Name"
+                  type="text"
+                  required
+                />
+              </div>
+              <div class="p-2 w-1/2">
+                <input
+                  class="w-full bg-gray-100 semirounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 msgSenderEmail"
+                  placeholder="Email"
+                  type="email"
+                  required
+                />
+              </div>
+              <div class="p-2 w-full">
+                <textarea
+                  class="w-full bg-gray-100 semirounded border border-gray-400 focus:outline-none h-48 focus:border-indigo-500 text-base px-4 py-2 resize-none block msgSenderMessage"
+                  placeholder="Message"
+                  required
+                ></textarea>
+              </div>
+              <div class="p-2 w-full">
+                <button
+                  class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 semirounded text-lg btn-primary msgSenderbtn"
+                >
+                  Send Message
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- About -->
+      <section class="text-gray-700 body-font">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-12">
+            <h1
+              class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"
+            >
+              More about our extension
+            </h1>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+              Password Rememberer stores your password locally in encrypted
+              form, and providing monthly local backup without having any
+              account! Having account in our extension will provide some extra
+              features like Encrypted Cloud Save, Cloud Backup, Global Access
+              and many more!
+              <br />
+              <br />
+              And all in free
+            </p>
+            <br />
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+              ALERT: Our PRO subscription is free now for trial and offer
+              period! Sign Up now to get premium features!
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- footer -->
+      <footer class="text-gray-700 body-font">
+        <center>
+          <div class="socialIcons">
+            <a
+              id="staticDownload"
+              class="SocialIconsDiv"
+              href="https://github.com/sohelshekhIn/PasswordRememberer"
+              ><img class="SocialIconsImg" src="img/github.svg" alt="GitHub"
+            /></a>
+            <a class="SocialIconsDiv" href="#"
+              ><img
+                id="downloadExtension"
+                class="SocialIconsImg"
+                src="img/download.gif"
+                alt="download"
+            /></a>
+          </div>
+          <div
+            class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col"
+          >
+            <a
+              class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
+            >
+              <img
+                src="img/passwordRememberer.svg"
+                class="footerLogo"
+                alt="logo"
+              />
+              <span class="ml-3 text-xl">PASSWORD REMEMBERER</span>
+            </a>
+            <p
+              class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4"
+            >
+              © 2020 Sohel Editz
+            </p>
+          </div>
+        </center>
+      </footer>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,160 @@
+.logo {
+  width: 3.1em;
+  height: 3.1em;
+}
+
+.navbar {
+  background-color: rgb(249, 243, 253);
+  top: 0em;
+  border-radius: 0em 0em 10px 10px;
+  position: sticky;
+  z-index: 99999999999999999999999999999999;
+  -webkit-border-radius: 0em 0em 10px 10px;
+  -moz-border-radius: 0em 0em 10px 10px;
+  -ms-border-radius: 0em 0em 10px 10px;
+  -o-border-radius: 0em 0em 10px 10px;
+}
+.signupBtn {
+  color: #193b69;
+  padding-left: 1em;
+  transform-origin: left center;
+  border-left: 1px solid #193b69;
+  transition: 0.3s ease-in-out;
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  -ms-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+}
+
+.signupBtn:hover {
+  color: #fff;
+  padding: 0.2em;
+  padding-left: 1em;
+  padding-right: 1em;
+  background-color: #193b69;
+}
+
+.footerLogo {
+  width: 3em;
+  height: 3em;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.rounded {
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.semirounded {
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.socialIcons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.SocialIconsDiv {
+  margin: 0em 3em;
+}
+
+.SocialIconsImg {
+  width: 2em;
+  height: 2em;
+}
+
+.navLinks {
+  padding: 0.4em;
+  transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -ms-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+}
+
+.navLinks:hover {
+  color: #193b69;
+  border-bottom: 2px solid #193b69;
+}
+
+.cardFeatures {
+  transition: 0.4s ease-in-out;
+  -webkit-transition: 0.4s ease-in-out;
+  -moz-transition: 0.4s ease-in-out;
+  -ms-transition: 0.4s ease-in-out;
+  -o-transition: 0.4s ease-in-out;
+}
+
+.cardFeatures:hover {
+  border: 1px solid transparent;
+  background-color: rgb(233, 231, 231);
+}
+
+.iconsWeb {
+  width: 1.5em;
+  height: 1.5em;
+  color: #193b69;
+}
+
+.cardNormal {
+  transition: 0.4s ease-in-out;
+  -webkit-transition: 0.4s ease-in-out;
+  -moz-transition: 0.4s ease-in-out;
+  -ms-transition: 0.4s ease-in-out;
+  -o-transition: 0.4s ease-in-out;
+}
+
+.cardNormal:hover {
+  margin-right: 10px;
+  /* border: 3px solid #193b69; */
+  border-radius: 10px;
+  background-color: rgb(231, 231, 231);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.cardBlocks {
+  transition: 0.4s ease-in-out;
+  background-color: inherit !important;
+  -webkit-transition: 0.4s ease-in-out;
+  -moz-transition: 0.4s ease-in-out;
+  -ms-transition: 0.4s ease-in-out;
+  -o-transition: 0.4s ease-in-out;
+}
+
+.btn-secondary,
+.btn-primary {
+  transition: 0.3s ease;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+}
+
+.btn-secondary:hover,
+.btn-primary:hover {
+  border: 1px solid transparent;
+}
+
+#downloadExtension {
+  width: 1.6em;
+  height: 1.6em;
+  margin-bottom: 0.5em;
+}

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="img/passwordRememberer.svg"
+      type="image/x-icon"
+    />
+    <title>Password Rememberer</title>
+    <style>
+      html {
+        overflow-y: auto;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      html::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+
+      html::-webkit-scrollbar-thumb {
+        background: black;
+        border-radius: 10px;
+      }
+      html::-webkit-scrollbar-track {
+        background: transparent;
+      }
+    </style>
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-analytics.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://staticcdn.web.app/content/tailwind.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/account.css" />
+  </head>
+  <body>
+    <header class="text-gray-700 body-font navbar">
+      <div
+        class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+      >
+        <a
+          href="..#index"
+          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+        >
+          <img class="logo" src="img/passwordRememberer.svg" alt="Logo" />
+          <span class="ml-3 text-xl logo-txt">PASSWORD REMEMBERER</span>
+        </a>
+        <nav
+          class="md:ml-auto flex flex-wrap items-center text-base justify-center"
+        >
+          <a href="..#home" class="navLinks mr-5 hover:text-gray-900 active"
+            >Home</a
+          >
+          <a href="..#extension" class="navLinks mr-5 hover:text-gray-900"
+            >Extension</a
+          >
+          <a href="..#pricing" class="navLinks mr-5 hover:text-gray-900"
+            >Pricing</a
+          >
+          <a href="..#contact" class="navLinks mr-5 hover:text-gray-900"
+            >About</a
+          >
+        </nav>
+      </div>
+    </header>
+    <!-- Login Activity -->
+
+    <section class="main">
+      <div id="bg"></div>
+      <div id="signin" class="signin">
+        <!-- Src https://source.unsplash.com/4180x3210?login,website,signin,signup,email,password -->
+        <div class="formDiv">
+          <div class="sohelMainHeading">
+            <h1 class="head">Sign In</h1>
+            <a href="?location=google">
+              <img class="googleLogo" src="img/google.svg" alt="Google" />
+            </a>
+          </div>
+          <form class="form" autocomplete="off">
+            <div class="inputDiv emailDiv">
+              <input
+                class="input SignInEmail email"
+                autofocus
+                type="email"
+                required
+              />
+              <span id="EmailPlaceholder" class="placeholder">Email</span>
+            </div>
+            <div class="inputDiv passDiv">
+              <input class="input SignInPass pass" type="password" required />
+              <span id="PasswordPlaceholder" class="placeholder">Password</span>
+            </div>
+            <div class="activity">
+              <button id="SignInBtn" class="btn btn-submitSignIn sigInBtn">
+                Sign In
+              </button>
+              <div class="moreDiv">
+                <a href="?location=signup" class="moreLink create"
+                  >Create Account</a
+                >
+                <a href="?location=forgot" class="moreLink forgot"
+                  >Forgot Password</a
+                >
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Sign Up -->
+
+      <div id="signup" class="signup">
+        <!-- Src https://source.unsplash.com/4180x3210?login,website,signin,signup,email,password -->
+        <div class="formDiv">
+          <div class="sohelMainHeading">
+            <h1 class="head">Sign Up</h1>
+            <a href="?location=google">
+              <img class="googleLogo" src="img/google.svg" alt="Google" />
+            </a>
+          </div>
+          <form class="form" autocomplete="off">
+            <div class="inputDiv nameDiv">
+              <input
+                class="input SignUpName name"
+                autofocus
+                type="text"
+                required
+              />
+              <span id="NamePlaceholderSignUp" class="placeholder">Name</span>
+            </div>
+            <div class="inputDiv emailDiv">
+              <input
+                id="signUpEmail"
+                class="input SignUpemail email"
+                type="email"
+                required
+              />
+              <span id="EmailPlaceholderSignUp" class="placeholder">Email</span>
+            </div>
+            <div class="inputDiv passDiv">
+              <input class="input passwor pass" type="password" required />
+              <span id="PasswordPlaceholderSignUp" class="placeholder"
+                >Password</span
+              >
+            </div>
+            <div class="activity">
+              <button id="SignUpbtn" class="btn btn-submitSignIn SignUpBtn">
+                Sign Up
+              </button>
+              <div class="moreDiv">
+                <a href="?location=signin" class="moreLink already">Sign In</a>
+                <a href="?location=forgot" class="moreLink forgot"
+                  >Forgot Password</a
+                >
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Forgot Passoword -->
+      <div id="forgotDiv" class="forgotDiv">
+        <!-- Src https://source.unsplash.com/4180x3210?login,website,signin,signup,email,password -->
+        <div class="formDiv">
+          <h1 class="headForgot">Reset Password</h1>
+          <form class="form formForgot" autocomplete="off">
+            <div class="inputDiv emailDiv">
+              <input
+                class="input forgotemail email"
+                autofocus
+                type="email"
+                required
+              />
+              <span id="EmailPlaceholderForgot" class="placeholder">Email</span>
+            </div>
+            <div class="activity">
+              <button id="forgotBtn" class="btn btn-submitSignIn forgotBtn">
+                Send Email
+              </button>
+              <div class="moreDiv">
+                <a href="?location=signup" class="moreLink create"
+                  >Create Account</a
+                >
+                <a href="?location=signin" class="moreLink already">Sign In</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <hr />
+    <!-- footer -->
+    <footer class="text-gray-700 body-font">
+      <center>
+        <div
+          class="forFooter container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col"
+        >
+          <a
+            class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
+          >
+            <img
+              src="img/passwordRememberer.svg"
+              class="footerLogo"
+              alt="logo"
+            />
+            <span class="ml-3 text-xl">PASSWORD REMEMBERER</span>
+          </a>
+          <p
+            class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4"
+          >
+            © 2020 Sohel Editz
+          </p>
+        </div>
+      </center>
+    </footer>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/create.js"></script>
+  </body>
+</html>

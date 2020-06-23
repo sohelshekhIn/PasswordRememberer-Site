@@ -1,0 +1,13 @@
+#main {
+  height: 90vh;
+  background-color: #ffffff;
+}
+#emailConfirm {
+  width: 20em;
+  height: 20em;
+  background-color: transparent;
+}
+
+.afterConfirmation {
+  display: none;
+}
