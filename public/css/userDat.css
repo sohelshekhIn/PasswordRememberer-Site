@@ -3,6 +3,66 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: "Montserrat", "sans-serif";
+}
+.main_box {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  border: none;
+  outline: none;
+  position: relative;
+  width: 50%;
+  margin: 1em 0em;
+  border-bottom: 1px solid rgb(185, 185, 185);
+}
+
+input:focus {
+  border-bottom: 1px solid rgb(70, 69, 69);
+}
+
+.form_control {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#viewPass {
+  border: none;
+  width: 3em;
+  height: 1.5em;
+  position: relative;
+  background-color: grey;
+  font-size: 1em;
+  color: white;
+  border-radius: 0px 4px 4px 0px;
+  -webkit-border-radius: 0px 4px 4px 0px;
+  -moz-border-radius: 0px 4px 4px 0px;
+  -ms-border-radius: 0px 4px 4px 0px;
+  -o-border-radius: 0px 4px 4px 0px;
+}
+
+.basic {
+  margin-left: 1em;
+  padding: 1em;
+  width: 40%;
+}
+
+#userdashboard {
+  font-weight: 700;
+  font-family: "Montserrat", "sans-serf";
+  font-size: 2em;
+}
+
+.security {
+  width: 40%;
+  margin-right: 1em;
+  padding: 1em;
 }
 
 .main_border {
