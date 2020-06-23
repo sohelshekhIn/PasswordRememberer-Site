@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="img/passwordRememberer.svg"
+      type="image/x-icon"
+    />
+    <title>Password Rememberer</title>
+    <style>
+      html {
+        overflow-y: auto;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      html::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+
+      html::-webkit-scrollbar-thumb {
+        background: black;
+        border-radius: 10px;
+      }
+      html::-webkit-scrollbar-track {
+        background: transparent;
+      }
+    </style>
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-analytics.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://staticcdn.web.app/content/tailwind.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/userDat.css" />
+  </head>
+  <body>
+    <header class="text-gray-700 body-font navbar">
+      <div
+        class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+      >
+        <a
+          href="..#index"
+          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+        >
+          <img class="logo" src="img/passwordRememberer.svg" alt="Logo" />
+          <span class="ml-3 text-xl logo-txt">PASSWORD REMEMBERER</span>
+        </a>
+        <nav
+          class="md:ml-auto flex flex-wrap items-center text-base justify-center"
+        >
+          <a href="..#home" class="navLinks mr-5 hover:text-gray-900 active"
+            >Home</a
+          >
+          <a href="..#extension" class="navLinks mr-5 hover:text-gray-900"
+            >Extension</a
+          >
+          <a href="..#pricing" class="navLinks mr-5 hover:text-gray-900"
+            >Pricing</a
+          >
+          <a href="..#contact" class="navLinks mr-5 hover:text-gray-900"
+            >About</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <section class="main">
+      <div class="main_box">
+        <div class="basic col">
+          <form class="basic_form">
+            <div class="form_control">
+              <input type="text" name="name" id="name" placeholder="Name" />
+            </div>
+            <div class="form_control">
+              <input type="text" name="name" id="name" placeholder="Name" />
+            </div>
+            <div class="form_control">
+              <input type="email" name="email" id="email" placeholder="email" />
+            </div>
+            <div class="form_control_group">
+              <p>Change Password</p>
+
+              <div class="form_control">
+                <input type="password" placeholder="Password" class="RePass" />
+                <p id="viewPass">View</p>
+              </div>
+              <div class="form_control">
+                <input type="password" placeholder="Password" class="RePass" />
+                <p id="viewPass">View</p>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="security col"></div>
+      </div>
+    </section>
+    <hr />
+    <!-- footer -->
+    <footer class="text-gray-700 body-font">
+      <center>
+        <div
+          class="forFooter container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col"
+        >
+          <a
+            class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
+          >
+            <img
+              src="img/passwordRememberer.svg"
+              class="footerLogo"
+              alt="logo"
+            />
+            <span class="ml-3 text-xl">PASSWORD REMEMBERER</span>
+          </a>
+          <p
+            class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4"
+          >
+            © 2020 Sohel Editz
+          </p>
+        </div>
+      </center>
+    </footer>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/userDat.js"></script>
+  </body>
+</html>
